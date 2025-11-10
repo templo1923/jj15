@@ -1,0 +1,26 @@
+!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Reproductor</title>
+  <style>body, html { margin:0; padding:0; background:#000; }</style>
+</head>
+<body>
+  <script>
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const encodedUrl = urlParams.get('r');
+      if (encodedUrl) {
+        // Decodifica la URL base64
+        const decodedUrl = atob(decodeURIComponent(encodedUrl));
+        // Redirige o carga en iframe
+        window.location.replace(decodedUrl);
+      } else {
+        document.body.innerHTML = "<h2 style='color:white;text-align:center;'>Enlace no válido</h2>";
+      }
+    } catch (e) {
+      document.body.innerHTML = "<h2 style='color:red;text-align:center;'>Error en el enlace</h2>";
+    }
+  </script>
+</body>
+</html>
